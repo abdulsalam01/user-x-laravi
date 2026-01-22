@@ -80,14 +80,14 @@ DB_DATABASE=/absolute/path/to/your/project/database/database.sqlite
 To keep listing fast (even on SQLite), indexes are aligned with query patterns.
 
 ### Users table
-Recommended indexes:
+Applied indexes:
 - `users_active_created_at_idx` -> speeds up “active users sorted by created_at”
 - `users_active_name_idx` -> helps search/sort (especially prefix searches)
 - `users_active_email_idx` -> helps search/sort
 - `users_role_active_idx` -> speeds up fetching admin recipients by role+active
 
 ### Orders table
-- `orders_user_id_idx` → speeds up `withCount('orders')`
+- `orders_user_id_idx` -> speeds up `withCount('orders')`
 
 ### Search note (SQLite performance)
 Contains search (`%term%`) is convenient but less index-friendly.  
