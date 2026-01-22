@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,7 +17,7 @@ class AdminNewUserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public User $user)
     {
         //
     }
@@ -27,7 +28,7 @@ class AdminNewUserMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Admin New User Mail',
+            subject: 'New user registered',
         );
     }
 
@@ -37,7 +38,8 @@ class AdminNewUserMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'emails.admin-new-user',
+            with: ['user' => $this->user]
         );
     }
 

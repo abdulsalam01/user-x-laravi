@@ -26,11 +26,18 @@ class SendUserCreatedEmails implements ShouldQueue
     {
         $user = $event->user;
 
+        // Safety checks so not accidentally spam.
+        if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) return;
+            
         // Email new user.
         Mail::to($user->email)->send(new UserCreatedMail($user));
 
         // Email all admins from DB.
         $adminEmails = $this->users->adminEmails();
+        // Safety checks so not accidentally spam.
+        $adminEmails = array_filter($adminEmails, fn ($e) => filter_var($e, FILTER_VALIDATE_EMAIL));
+
+        if (!$adminEmails) return;
         if (!empty($adminEmails)) {
             Mail::to($adminEmails)->send(new AdminNewUserMail($user));
         }
