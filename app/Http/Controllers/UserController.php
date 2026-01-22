@@ -26,7 +26,9 @@ class UserController extends Controller
         $search = $request->search();
         $sortBy = $request->sortBy();
 
+        // Get from cache (5 minutes expired) or databases.
         $ids = $users->cachedActiveUserIds($search, $sortBy, $page, $perPage);
+        // Return the ids and get from database, fast (indexing).
         $items = $users->getUsersByIdsWithCounts($ids);
 
         return response()->json([
