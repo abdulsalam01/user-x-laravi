@@ -26,4 +26,13 @@ class UserService
 
         return $user;
     }
+
+    public function getUser($search, $sortBy, $page, $perPage) {
+        // Get from cache (5 minutes expired) or databases.
+        $ids = $this->users->cachedActiveUserIds($search, $sortBy, $page, $perPage);
+        // Return the ids and get from database, fast (indexing).
+        $items = $this->users->getUsersByIdsWithCounts($ids);
+
+        return ['page' => $page, 'users' => $items];
+    }
 }
