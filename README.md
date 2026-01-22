@@ -9,6 +9,23 @@
 
 ---
 
+## Outline / Table of Contents
+1. [Background & Goals](#background--goals)
+2. [Key Features](#key-features)
+3. [Tools--libraries-used](#tools--libraries-used)
+4. [Database-setup-sqlite](#database-setup-sqlite)
+5. [Database-indexing--techniques](#database-indexing--techniques)
+6. [How-to-start](#how-to-start)
+7. [Code-structure--design-perspective](#code-structure--design-perspective)
+8. [Flow--interconnection-overview](#flow--interconnection-overview)
+9. [API-endpoints](#api-endpoints)
+10. [Optimization-notes](#optimization-notes)
+11. [Queue--failed-job-debugging](#queue--failed-job-debugging)
+12. [Result-screenshots](#result-screenshots)
+13. [Notes-for-reviewers](#notes-for-reviewers)
+
+---
+
 ## Background & Goals
 
 This project implements a small API for:
@@ -414,11 +431,14 @@ tail -f storage/logs/laravel.log
 - Admin mail success: `public/results/admin.png`
 - List users (with can_edit): `public/results/list-users.png`
 
-Then reference them here:
-
 ![User mail success](public/results/user.png)  
+User mail success
+
 ![Admin mail success](public/results/admin.png)  
+Admin mail success
+
 ![List Users](public/results/list-users.png)
+List users
 
 ---
 
