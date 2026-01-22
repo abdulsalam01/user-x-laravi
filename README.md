@@ -71,7 +71,7 @@ DB_CONNECTION=sqlite
 DB_DATABASE=/absolute/path/to/your/project/database/database.sqlite
 ```
 
-> Tip: If you keep it relative, ensure Laravel resolves it correctly. Absolute path is safest.
+> Tip: Absolute path is safest.
 
 ---
 
