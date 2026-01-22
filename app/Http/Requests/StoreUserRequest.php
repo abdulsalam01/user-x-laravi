@@ -26,6 +26,8 @@ class StoreUserRequest extends FormRequest
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
             'name' => ['required', 'string', 'min:3', 'max:50'],
+
+            // Future-needs validation.
             // // Optional, but strictly limited to specific values.
             // 'role' => ['sometimes', 'string', Rule::in(['user', 'manager', 'administrator'])],
             // // Optional, must be true/false/1/0.
